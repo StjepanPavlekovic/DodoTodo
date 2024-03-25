@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dodo Todo</title>
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="modal hidden" id="category-editor">
+        <div class="editor-form small-form">
+          <label for="categoryTitle"
+            >Category name:
+            <label class="error hidden" id="errCategoryTitle">*</label>
+          </label>
+          <input
+            type="text"
+            maxlength="30"
+            id="categoryTitle"
+            placeholder="New category name"
+          />
+
+          <label for="categoryColor">Choose color:</label>
+          <input type="color" id="colorPicker" value="#e66465" />
+
+          <div class="editor-form-actions">
+            <button class="button no" id="btnCancelCategory">Cancel</button>
+            <button class="button ok" id="btnConfirmCategory">Confirm</button>
+          </div>
+
+          <div id="dangerZone" class="hidden">
+            <div class="divider"></div>
+            <label
+              >[Danger zone] I understand that this action is
+              irreversible:<input type="checkbox" id="cbDanger"
+            /></label>
+            <button id="btnDanger" class="button danger" disabled>
+              Delete category along with todos
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal hidden" id="editor">
+        <div class="editor-form">
+          <label for="todoTitle"
+            >Title:
+            <label class="error hidden" id="errTitle">*</label>
+          </label>
+
+          <input type="text" id="todoTitle" placeholder="Todo title" />
+
+          <label for="todoDescription"
+            >Description:
+            <label class="error hidden" id="errDescription">*</label>
+          </label>
+          <textarea
+            id="todoDescription"
+            placeholder="Todo description"
+          ></textarea>
+
+          <label for="todoTime"
+            >Time:
+            <label class="error hidden" id="errTime">*</label>
+          </label>
+          <input
+            type="datetime-local"
+            id="todoTime"
+            min="1970-01-01T00:00"
+            max="2199-12-31T23:59"
+          />
+          <div class="todoComplete">
+            <input type="checkbox" id="cbComplete" name="cbComplete" />
+            <label for="cbComplete">Mark todo complete</label>
+          </div>
+
+          <div class="editor-form-actions">
+            <button class="button no" id="btnCancelTodo">Cancel</button>
+            <button class="button ok" id="btnConfirmTodo">Confirm</button>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="logo">
+          <div class="logo-img"></div>
+          <h1 class="logo-text">Dodo Todo</h1>
+          <div class="credits">
+            <p>Made by <a href="#">Pavleq</a></p>
+          </div>
+        </div>
+        <ul class="categories"></ul>
+        <div class="new-category">
+          <img class="add-icon" src="public/Add.svg" /> Add a category
+        </div>
+      </div>
+      <div class="content">
+        <div class="content-wrapper">
+          <div class="content-title-tools">
+            <div class="edit-category"><img src="public/edit.svg" /></div>
+            <h1 id="content-title"></h1>
+          </div>
+
+          <h3 id="instruction"></h3>
+          <div class="todos"></div>
+        </div>
+        <div class="hidden side-button scroller">
+          <img class="add-todo-icon" src="public/arrow.svg" />
+        </div>
+        <div class="side-button add-todo">
+          <img class="add-todo-icon" src="public/AddWhite.svg" />
+        </div>
+      </div>
+    </div>
+    <script src="bundle.js"></script>
+  </body>
+</html>
