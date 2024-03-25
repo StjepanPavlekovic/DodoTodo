@@ -3,25 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo</title>
+    <title>Dodo Todo</title>
     <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
     <div class="wrapper">
+      <div class="modal hidden" id="category-editor">
+        <div class="editor-form small-form">
+          <label for="categoryTitle"
+            >Category name:
+            <label class="error hidden" id="errCategoryTitle">*</label>
+          </label>
+          <input
+            type="text"
+            maxlength="30"
+            id="categoryTitle"
+            placeholder="New category name"
+          />
+
+          <label for="categoryColor">Choose color:</label>
+          <input type="color" id="colorPicker" value="#e66465" />
+
+          <div class="editor-form-actions">
+            <button class="button no" id="btnCancelCategory">Cancel</button>
+            <button class="button ok" id="btnConfirmCategory">Confirm</button>
+          </div>
+
+          <div id="dangerZone" class="hidden">
+            <div class="divider"></div>
+            <label
+              >[Danger zone] I understand that this action is
+              irreversible:<input type="checkbox" id="cbDanger"
+            /></label>
+            <button id="btnDanger" class="button danger" disabled>
+              Delete category along with todos
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="modal hidden" id="editor">
         <div class="editor-form">
-          <label for="todoTitle">Title:</label>
+          <label for="todoTitle"
+            >Title:
+            <label class="error hidden" id="errTitle">*</label>
+          </label>
 
           <input type="text" id="todoTitle" placeholder="Todo title" />
 
-          <label for="todoDescription">Description:</label>
+          <label for="todoDescription"
+            >Description:
+            <label class="error hidden" id="errDescription">*</label>
+          </label>
           <textarea
             id="todoDescription"
             placeholder="Todo description"
           ></textarea>
 
-          <label for="todoTime">Time:</label>
-          <input type="datetime-local" id="todoTime" />
+          <label for="todoTime"
+            >Time:
+            <label class="error hidden" id="errTime">*</label>
+          </label>
+          <input
+            type="datetime-local"
+            id="todoTime"
+            min="1970-01-01T00:00"
+            max="2199-12-31T23:59"
+          />
+          <div class="todoComplete">
+            <input type="checkbox" id="cbComplete" name="cbComplete" />
+            <label for="cbComplete">Mark todo complete</label>
+          </div>
 
           <div class="editor-form-actions">
             <button class="button no" id="btnCancelTodo">Cancel</button>
@@ -37,85 +88,20 @@
             <p>Made by <a href="#">Pavleq</a></p>
           </div>
         </div>
-        <ul class="categories">
-          <!-- 
-          <li class="category">
-            Test category 1
-            <div class="fragment" style="background: #85e2da"></div>
-          </li>
-          <li class="category selected">
-            Test category 2 super secret
-            <div class="fragment" style="background: #90e459"></div>
-          </li>
-          <li class="category">
-            Test category 3
-            <div class="fragment" style="background: #ff8f34"></div>
-          </li>
-          <li class="category">
-            Test category 4
-            <div class="fragment" style="background: #c277ff"></div>
-          </li> -->
-        </ul>
+        <ul class="categories"></ul>
         <div class="new-category">
           <img class="add-icon" src="public/Add.svg" /> Add a category
         </div>
       </div>
       <div class="content">
         <div class="content-wrapper">
-          <h1 id="content-title">My custom Dodo Todo category 1</h1>
-          <h3 id="instruction">Click to edit:</h3>
-          <div class="todos">
-            <!-- <div class="todo">
-              <h3 class="todo-title">Test</h3>
-              <p class="todo-description">Ovo je testni tekst</p>
-              <div class="todo-time">
-                <h4>14:30</h4>
-                <h4>8. ožujak 2024.</h4>
-              </div>
-              <div class="marker"></div>
-              <div class="delete"><img src="public/delete.png" /></div>
-            </div>
-            <div class="todo">
-              <h3 class="todo-title">Test</h3>
-              <p class="todo-description">Ovo je testni tekst</p>
-              <div class="todo-time">
-                <h4>14:30</h4>
-                <h4>8. ožujak 2024.</h4>
-              </div>
-              <div class="marker"></div>
-              <div class="delete"><img src="public/delete.png" /></div>
-            </div>
-            <div class="todo">
-              <h3 class="todo-title">Test</h3>
-              <p class="todo-description">Ovo je testni tekst</p>
-              <div class="todo-time">
-                <h4>14:30</h4>
-                <h4>8. ožujak 2024.</h4>
-              </div>
-              <div class="marker"></div>
-              <div class="delete"><img src="public/delete.png" /></div>
-            </div>
-            <div class="todo">
-              <h3 class="todo-title">Test</h3>
-              <p class="todo-description">Ovo je testni tekst</p>
-              <div class="todo-time">
-                <h4>14:30</h4>
-                <h4>8. ožujak 2024.</h4>
-              </div>
-              <div class="marker"></div>
-              <div class="delete"><img src="public/delete.png" /></div>
-            </div>
-            <div class="todo">
-              <h3 class="todo-title">Test</h3>
-              <p class="todo-description">Ovo je testni tekst</p>
-              <div class="todo-time">
-                <h4>14:30</h4>
-                <h4>8. ožujak 2024.</h4>
-              </div>
-              <div class="marker"></div>
-              <div class="delete"><img src="public/delete.png" /></div>
-            </div> -->
+          <div class="content-title-tools">
+            <div class="edit-category"><img src="public/edit.svg" /></div>
+            <h1 id="content-title"></h1>
           </div>
+
+          <h3 id="instruction"></h3>
+          <div class="todos"></div>
         </div>
         <div class="hidden side-button scroller">
           <img class="add-todo-icon" src="public/arrow.svg" />
@@ -125,6 +111,6 @@
         </div>
       </div>
     </div>
-    <script src="src/index.js"></script>
+    <script src="bundle.js"></script>
   </body>
 </html>
