@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="modal hidden" id="editor">
+        <div class="editor-form">
+          <label for="todoTitle">Title:</label>
+
+          <input type="text" id="todoTitle" placeholder="Todo title" />
+
+          <label for="todoDescription">Description:</label>
+          <textarea
+            id="todoDescription"
+            placeholder="Todo description"
+          ></textarea>
+
+          <label for="todoTime">Time:</label>
+          <input type="datetime-local" id="todoTime" />
+
+          <div class="editor-form-actions">
+            <button class="button no" id="btnCancelTodo">Cancel</button>
+            <button class="button ok" id="btnConfirmTodo">Confirm</button>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="logo">
+          <div class="logo-img"></div>
+          <h1 class="logo-text">Dodo Todo</h1>
+          <div class="credits">
+            <p>Made by <a href="#">Pavleq</a></p>
+          </div>
+        </div>
+        <ul class="categories">
+          <!-- 
+          <li class="category">
+            Test category 1
+            <div class="fragment" style="background: #85e2da"></div>
+          </li>
+          <li class="category selected">
+            Test category 2 super secret
+            <div class="fragment" style="background: #90e459"></div>
+          </li>
+          <li class="category">
+            Test category 3
+            <div class="fragment" style="background: #ff8f34"></div>
+          </li>
+          <li class="category">
+            Test category 4
+            <div class="fragment" style="background: #c277ff"></div>
+          </li> -->
+        </ul>
+        <div class="new-category">
+          <img class="add-icon" src="public/Add.svg" /> Add a category
+        </div>
+      </div>
+      <div class="content">
+        <div class="content-wrapper">
+          <h1 id="content-title">My custom Dodo Todo category 1</h1>
+          <h3 id="instruction">Click to edit:</h3>
+          <div class="todos">
+            <!-- <div class="todo">
+              <h3 class="todo-title">Test</h3>
+              <p class="todo-description">Ovo je testni tekst</p>
+              <div class="todo-time">
+                <h4>14:30</h4>
+                <h4>8. ožujak 2024.</h4>
+              </div>
+              <div class="marker"></div>
+              <div class="delete"><img src="public/delete.png" /></div>
+            </div>
+            <div class="todo">
+              <h3 class="todo-title">Test</h3>
+              <p class="todo-description">Ovo je testni tekst</p>
+              <div class="todo-time">
+                <h4>14:30</h4>
+                <h4>8. ožujak 2024.</h4>
+              </div>
+              <div class="marker"></div>
+              <div class="delete"><img src="public/delete.png" /></div>
+            </div>
+            <div class="todo">
+              <h3 class="todo-title">Test</h3>
+              <p class="todo-description">Ovo je testni tekst</p>
+              <div class="todo-time">
+                <h4>14:30</h4>
+                <h4>8. ožujak 2024.</h4>
+              </div>
+              <div class="marker"></div>
+              <div class="delete"><img src="public/delete.png" /></div>
+            </div>
+            <div class="todo">
+              <h3 class="todo-title">Test</h3>
+              <p class="todo-description">Ovo je testni tekst</p>
+              <div class="todo-time">
+                <h4>14:30</h4>
+                <h4>8. ožujak 2024.</h4>
+              </div>
+              <div class="marker"></div>
+              <div class="delete"><img src="public/delete.png" /></div>
+            </div>
+            <div class="todo">
+              <h3 class="todo-title">Test</h3>
+              <p class="todo-description">Ovo je testni tekst</p>
+              <div class="todo-time">
+                <h4>14:30</h4>
+                <h4>8. ožujak 2024.</h4>
+              </div>
+              <div class="marker"></div>
+              <div class="delete"><img src="public/delete.png" /></div>
+            </div> -->
+          </div>
+        </div>
+        <div class="hidden side-button scroller">
+          <img class="add-todo-icon" src="public/arrow.svg" />
+        </div>
+        <div class="side-button add-todo">
+          <img class="add-todo-icon" src="public/AddWhite.svg" />
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
